@@ -7,13 +7,16 @@ public abstract class Chara implements CharaAll{
 	private int atk;
 	private String name;
 
-	Chara(int input_hp, int input_mp, int input_atk, String input_nickname){
+	Chara(int input_hp, int input_mp, int input_atk, String input_nickname) {
+
 		if (input_nickname.length() >= 10) {
 			throw new IllegalArgumentException("名前が長すぎます！");
+		}
+		if (input_nickname.length() <= 1) {
+			throw new IllegalArgumentException("名前が短すぎます！");
 		}else {
 			this.setName(input_nickname);
 		}
-
 		this.setHp(input_hp);
 		this.setMp(input_mp);
 		this.setAtk(input_atk);
@@ -22,6 +25,7 @@ public abstract class Chara implements CharaAll{
 		System.out.println("体力:" + this.getHp() + "\tMP:"+ this.getMp() + "\t攻撃力:" + this.getAtk());
 
 	}
+
 
 	final void printStatus(){
 		System.out.println(this.getName() + "\tの体力" + this.getHp() + "\tMP:"+ this.getMp() + "\t攻撃力" + this.getAtk());
@@ -67,24 +71,29 @@ public abstract class Chara implements CharaAll{
 	}
 
 	//ここから状態異常
+	//眠り
 	void sleep() {
 		this.setHp(this.getHp() + 500);
 		System.out.println(this.getName() + "は、眠って回復した！");
 	}
+	//強い眠り
+	void StrongSleep() {
+		System.out.println(this.getName() + "は強い眠りに落ちた！");
+	}
 
-	/*
+	/* 毒
 	 * これが数ターン持続する処理を書きたい！
-	 * 今の自分ではChara.poisonをターン毎に書いていく手段しか思いつかない
+	 * 今の自分ではChara.poisonをターン毎に書いていく手段しか思いつかない…
 	 */
 	void poison() {
 		System.out.println(this.getName() + "は毒に侵された！");
 		this.setHp(this.getHp() - 200);
-
 	}
 
+
+	//戦闘不能
 	final void down() {
 		System.out.println(this.getName() + "は倒れた！");
-		System.out.println("戦闘は終了した…");
 	}
 
 	//

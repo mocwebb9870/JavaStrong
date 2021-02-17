@@ -22,6 +22,7 @@ public class DeamonMaster extends Monster{
  * 処理の後コメントだともう一度割った数字が出てしまう
  */
 	void DarkWave(Chara target) {
+		this.setMp(this.getMp() - 100);
 		System.out.println(this.getName() + "は闇の波動を解き放った！");
 		System.out.println(target.getName() + "のHPが" + (target.getHp() / 2) + "減った！");
 		target.setHp(target.getHp() / 2);

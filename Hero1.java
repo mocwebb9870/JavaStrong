@@ -4,8 +4,9 @@ public class Hero1 extends Chara{
 
 	Hero1(int input_hp, int input_mp, int input_atk, String input_nickname) {
 		super(input_hp, input_mp, input_atk, input_nickname);
-		// TODO 自動生成されたコンストラクター・スタブ
+
 	}
+
 
 	@Override
 	public void attack(chap13.Monster target) {
